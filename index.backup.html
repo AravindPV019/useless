@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>cook,cooking,cooked</title>
+ <link rel="stylesheet" href="style.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+ <script src="three.min.js"></script>
+</head>
+<body>
+
+ <!-- Top Navigation Bar -->
+ <header>
+ <a href="#home" class="logo-group" id="nav-logo-link">
+ <div class="logo-icon"></div>
+ <div class="logo-text">
+ <h1>cook,cooking,cooked</h1>
+ <p>MasterChef Showdown vs. Academic Survival</p>
+ </div>
+ </a>
+
+ <div class="header-right">
+ <!-- Back to Menu button (visible when on subpages) -->
+ <button class="nav-hub-btn" id="btn-header-back-hub" style="display: none;">
+ ← Back to Options
+ </button>
+ </div>
+ </header>
+
+ <main>
+ <!-- ===================================================
+ CENTRAL HUB / HOME: TWO OPTIONS IN THE MIDDLE
+ =================================================== -->
+ <section id="view-home" class="view-section active-view">
+ <div class="hub-hero">
+ <span class="hub-badge">Select Your Simulation</span>
+ <h2>Are you cooked or can you cook?</h2>
+ </div>
+
+     <!-- Two Big Options in the Middle -->
+    <div class="options-middle-grid">
+      <!-- Option 1 Card -->
+      <div class="option-portal-card card-cooked" id="portal-option-1">
+        <div>
+          <div class="card-num-tag">Option 01 • Academic Crisis</div>
+          <h3 class="portal-title">Are U Cooked?</h3>
+        </div>
+        <button type="button" class="portal-action-btn" id="btn-launch-cooked-meter">
+          <span>Launch Cooked Meter</span>
+        </button>
+      </div>
+
+      <!-- Option 2 Card -->
+      <div class="option-portal-card card-game" id="portal-option-2">
+        <div>
+          <div class="card-num-tag">Option 02 • 3D Arena</div>
+          <h3 class="portal-title">Can U Cook?</h3>
+        </div>
+        <button type="button" class="portal-action-btn" id="btn-enter-competition">
+          <span>Enter Competition</span>
+        </button>
+      </div>
+    </div>
+ </section>
+
+ <!-- ===================================================
+ PAGE 1: OPTION 1 - "AM I COOKED?" EXAM SURVIVAL METER
+ =================================================== -->
+ <section id="view-cooked-meter" class="view-section">
+ <!-- Subpage Navigation Bar -->
+ <div class="page-nav-bar">
+ <button class="btn-back btn-back-to-hub">
+ ← Back to Main Menu
+ </button>
+ <span class="page-indicator-badge">Option 1 • Exam Cooked Cockpit</span>
+ </div>
+
+ <div class="page-hero">
+ <h2>Academic Cooked-o-Meter</h2>
+ </div>
+
+ <!-- 3-Column Cockpit Dashboard: Left Semi-Circles | Center Gauge | Right Semi-Circles -->
+ <div class="cooked-cockpit-layout">
+ 
+ <!-- LEFT FLANK: Semi-Circle Input Pods -->
+ <div class="flank-column flank-left">
+ <div class="flank-header-badge">
+ <span>EXAM SCHEDULE</span>
+ </div>
+
+ <!-- Semi-Circle Pod 1: Days Left -->
+ <div class="semi-circle-pod pod-left" id="pod-days-left">
+ <div class="pod-glow-accent"></div>
+ <div class="pod-content">
+  <div class="pod-title">Days Till Exam</div>
+ <div class="pod-dial-controls">
+ <button type="button" class="pod-step-btn" data-target="days-left" data-delta="-1">−</button>
+ <input type="number" id="days-left" class="semi-circle-num-input" value="3" min="0" max="365" step="1">
+ <button type="button" class="pod-step-btn" data-target="days-left" data-delta="1">+</button>
+ </div>
+ <div class="pod-subtext">Days Remaining</div>
+ </div>
+ </div>
+
+ <!-- Semi-Circle Pod 2: Total Modules -->
+ <div class="semi-circle-pod pod-left" id="pod-total-modules">
+ <div class="pod-glow-accent"></div>
+ <div class="pod-content">
+  <div class="pod-title">Total Modules</div>
+ <div class="pod-dial-controls">
+ <button type="button" class="pod-step-btn" data-target="total-modules" data-delta="-1">−</button>
+ <input type="number" id="total-modules" class="semi-circle-num-input" value="5" min="1" max="50" step="1">
+ <button type="button" class="pod-step-btn" data-target="total-modules" data-delta="1">+</button>
+ </div>
+ <div class="pod-subtext">In Whole Syllabus</div>
+ </div>
+ </div>
+
+ <!-- Semi-Circle Pod 3: Daily Study Hours -->
+ <div class="semi-circle-pod pod-left" id="pod-daily-hours">
+ <div class="pod-glow-accent"></div>
+ <div class="pod-content">
+  <div class="pod-title">Daily Study Time</div>
+ <div class="pod-dial-controls">
+ <button type="button" class="pod-step-btn" data-target="daily-study-hours" data-delta="-1">−</button>
+ <input type="number" id="daily-study-hours" class="semi-circle-num-input" value="6" min="1" max="24" step="1">
+ <button type="button" class="pod-step-btn" data-target="daily-study-hours" data-delta="1">+</button>
+ </div>
+ <div class="pod-subtext">Max Hours / Day</div>
+ </div>
+ </div>
+
+ <!-- Semi-Circle Pod 4: Student & Exam Profile -->
+ <div class="semi-circle-pod pod-left pod-text-profile">
+ <div class="pod-glow-accent"></div>
+ <div class="pod-content">
+  <div class="pod-title">Student Profile</div>
+ <div class="pod-input-stack">
+ <input type="text" id="student-name" class="semi-circle-text-input" value="Desperate Student" placeholder="Your Name">
+ <input type="text" id="exam-name" class="semi-circle-text-input" value="Semester Finals" placeholder="Course Name">
+ </div>
+ <div class="pod-subtext">Identity Verification</div>
+ </div>
+ </div>
+ </div>
+
+ <!-- CENTER CONSOLE: The Live Skillet & Roast Gauge -->
+ <div class="card results-card center-console">
+ <!-- Quick Presets Inside Console -->
+ <div class="quick-scenarios cockpit-presets">
+ <span class="preset-label">Presets:</span>
+ <button class="quick-scenario-btn" data-scenario="exam_tomorrow">Exam Tomorrow</button>
+ <button class="quick-scenario-btn" data-scenario="one_week_clutch">1 Week Clutch</button>
+ <button class="quick-scenario-btn" data-scenario="semester_start">Semester Start</button>
+ </div>
+
+ <div class="card-title-bar">
+ <h3>Live Cooked Gauge</h3>
+ <span id="cooked-status-badge" class="status-badge badge-welldone">WELL DONE</span>
+ </div>
+
+ <!-- Skillet with Student Emoji -->
+ <div class="skillet-container">
+ <div id="skillet-student-emoji" style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; color: var(--accent-orange);">CHILL</div>
+ <div id="meter-flame-effect" class="flame-container">
+ <span></span><span></span><span></span>
+ </div>
+ </div>
+
+ <!-- Percentage Output -->
+ <div class="percentage-display" id="cooked-percentage">82%</div>
+ <div style="font-size: 0.75rem; color: var(--text-light-muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800;">
+ Estimated Cooked Level
+ </div>
+
+ <!-- Visual Bar Track -->
+ <div class="cooked-meter-bar-track">
+ <div id="cooked-meter-fill" class="cooked-meter-bar-fill" style="width: 82%;"></div>
+ </div>
+
+ <!-- Roast Verdict Quote Box -->
+ <div class="roast-quote-box">
+ <p id="cooked-roast-text">"You need to study 16 hours a day and absorb PDFs via bluetooth into your skull."</p>
+ </div>
+
+ <!-- Dedicated Zodiac Cosmic Luck Output Box -->
+ <div class="zodiac-luck-card">
+ <div class="zodiac-luck-header">
+ <span class="zodiac-luck-title" id="zodiac-verdict-title">Zodiac Luck Analysis</span>
+ <span id="zodiac-luck-badge" class="status-badge badge-burnt">COSMIC LUCK: ZERO</span>
+ </div>
+ <p class="zodiac-luck-text" id="zodiac-verdict-text">
+ "Even gods doesn't help you! Mars ran out of fire and left you to burn alone."
+ </p>
+ </div>
+
+ <!-- Diagnostics Velocity -->
+ <div class="diagnostics-list">
+ <div><span>Required Study Velocity:</span><span id="cooked-velocity-text"><strong>10.7 hrs/day</strong></span></div>
+ <div><span>Time Balance:</span><span id="cooked-deficit-text">Deficit: Short by 14 hours!</span></div>
+ </div>
+
+ <button class="btn btn-orange" id="btn-generate-cert" style="width: 100%;">
+ View Certified Cooked Card & Share
+ </button>
+ </div>
+
+ <!-- RIGHT FLANK: Semi-Circle Input Pods -->
+ <div class="flank-column flank-right">
+ <div class="flank-header-badge">
+ <span>SYLLABUS & COSMIC LUCK</span>
+ </div>
+
+ <!-- Semi-Circle Pod 5: Covered Modules -->
+ <div class="semi-circle-pod pod-right" id="pod-covered-modules">
+ <div class="pod-glow-accent"></div>
+ <div class="pod-content">
+  <div class="pod-title">Covered Modules</div>
+ <div class="pod-dial-controls">
+ <button type="button" class="pod-step-btn" data-target="covered-modules" data-delta="-0.5">−</button>
+ <input type="number" id="covered-modules" class="semi-circle-num-input" value="1" min="0" max="50" step="0.5">
+ <button type="button" class="pod-step-btn" data-target="covered-modules" data-delta="0.5">+</button>
+ </div>
+ <div class="pod-subtext">Already Studied</div>
+ </div>
+ </div>
+
+ <!-- Semi-Circle Pod 6: Modules Left -->
+ <div class="semi-circle-pod pod-right" id="pod-modules-left">
+ <div class="pod-glow-accent"></div>
+ <div class="pod-content">
+  <div class="pod-title">Modules Left</div>
+ <div class="pod-dial-controls">
+ <button type="button" class="pod-step-btn" data-target="modules-left" data-delta="-0.5">−</button>
+ <input type="number" id="modules-left" class="semi-circle-num-input" value="4" min="0" max="50" step="0.5">
+ <button type="button" class="pod-step-btn" data-target="modules-left" data-delta="0.5">+</button>
+ </div>
+ <div class="pod-subtext">Left to Cram</div>
+ </div>
+ </div>
+
+ <!-- Semi-Circle Pod 7: Zodiac Sign Selector Dial -->
+ <div class="semi-circle-pod pod-right pod-selector-pod" id="pod-zodiac">
+ <div class="pod-glow-accent"></div>
+ <div class="pod-content">
+  <div class="pod-title">Zodiac Sign (Cosmic Luck)</div>
+ <div class="pod-select-wrap">
+ <select id="zodiac-sign" class="semi-circle-select">
+              <option value="aries" selected>Aries (Mar 21 – Apr 19)</option>
+              <option value="taurus">Taurus (Apr 20 – May 20)</option>
+              <option value="gemini">Gemini (May 21 – Jun 20)</option>
+              <option value="cancer">Cancer (Jun 21 – Jul 22)</option>
+              <option value="leo">Leo (Jul 23 – Aug 22)</option>
+              <option value="virgo">Virgo (Aug 23 – Sep 22)</option>
+              <option value="libra">Libra (Sep 23 – Oct 22)</option>
+              <option value="scorpio">Scorpio (Oct 23 – Nov 21)</option>
+              <option value="sagittarius">Sagittarius (Nov 22 – Dec 21)</option>
+              <option value="capricorn">Capricorn (Dec 22 – Jan 19)</option>
+              <option value="aquarius">Aquarius (Jan 20 – Feb 18)</option>
+              <option value="pisces">Pisces (Feb 19 – Mar 20)</option>
+            </select>
+ </div>
+ <div class="pod-subtext">Celestial Intervention</div>
+ </div>
+ </div>
+
+ <!-- Semi-Circle Pod 8: Panic State Selector Dial -->
+ <div class="semi-circle-pod pod-right pod-selector-pod" id="pod-panic">
+ <div class="pod-glow-accent"></div>
+ <div class="pod-content">
+  <div class="pod-title">Mental State</div>
+ <div class="pod-select-wrap">
+ <select id="panic-mode" class="semi-circle-select">
+ <option value="chill">Chill ("I'll lock in soon")</option>
+ <option value="normal" selected>Moderate ("Slides on 2x")</option>
+ <option value="crisis">Full Crisis ("One-shot video")</option>
+ <option value="praying">Pure Prayer ("Only God can save me")</option>
+ </select>
+ </div>
+ <div class="pod-subtext">Panic Multiplier</div>
+ </div>
+ </div>
+
+ <!-- Semi-Circle Pod 9: Hours Per Module -->
+ <div class="semi-circle-pod pod-right" id="pod-hours-per-mod">
+
+ </div>
+ </section>
+
+ <!-- ===================================================
+ PAGE 2: OPTION 2 - MOBILE GAME AD PLAYABLE ARENA
+ =================================================== -->
+ <section id="view-cooking-game" class="view-section">
+ <!-- Subpage Navigation Bar -->
+ <div class="page-nav-bar">
+ <button class="btn-back btn-back-to-hub">
+ ← Back to Main Menu
+ </button>
+ <span class="page-indicator-badge">Option 2 • Playable Mobile Ad Edition </span>
+      <button class="btn-icon-toggle" id="btn-toggle-sound" title="Toggle Sound Effects" style="margin-left:auto;">
+        <span id="sound-icon"></span><span id="sound-label">SOUND: ON</span>
+      </button>
+    </div>
+
+ <!-- VIRAL MOBILE GAME AD TOP BANNER -->
+ <div class="mobile-ad-header-banner">
+ <div class="ad-stats-bar">
+ <div class="ad-stat-item coin-box">
+ <span class="coin-icon">COINS</span>
+ <span id="ad-coin-count" class="ad-stat-val">1,250</span>
+ </div>
+ <div class="ad-stat-item combo-box">
+ <span class="fire-icon">FIRE</span>
+ <span id="ad-combo-count" class="ad-stat-val">x1 COMBO</span>
+ </div>
+ <div class="ad-stat-item star-box">
+ <span id="ad-star-rating" class="star-display">***</span>
+ </div>
+ </div>
+ </div>
+
+ <!-- MAIN PLAYABLE MOBILE AD ARENA CONTAINER -->
+ <div class="mobile-ad-stage-arena">
+ 
+ <!-- Interactive Stage Top Nav Tabs -->
+ <div class="mobile-stage-tabs">
+ <div class="stage-tab active" id="tab-stage-1">
+ <span class="stage-tab-num">1</span>SLICE FRENZY
+ </div>
+ <div class="stage-tab" id="tab-stage-2">
+ <span class="stage-tab-num">2</span>TIMING FLIP
+ </div>
+ <div class="stage-tab" id="tab-stage-3">
+ <span class="stage-tab-num">3</span>TOWER STACK
+ </div>
+ <div class="stage-tab" id="tab-stage-4">
+ <span class="stage-tab-num">4</span>JUDGE TEST
+ </div>
+ </div>
+
+ <!-- The Canvas & Interactive Stage Viewport -->
+ <div class="mobile-game-viewport" id="mobile-game-viewport">
+ <canvas id="cooking-game-canvas"></canvas>
+
+ </div>
+ <div class="stage-tab" id="tab-stage-3">
+ <span class="stage-tab-num">3</span>TOWER STACK
+ </div>
+ <div class="stage-tab" id="tab-stage-4">
+ <span class="stage-tab-num">4</span>JUDGE TEST
+ </div>
+ </div>
+
+ <!-- The Canvas & Interactive Stage Viewport -->
+ <div class="mobile-game-viewport" id="mobile-game-viewport">
+ <canvas id="cooking-game-canvas"></canvas>
+
+ <!-- Animated Mobile Ad Tutorial Finger Pointer -->
+ <div class="ad-tutorial-finger" id="ad-tutorial-finger">
+ <span class="finger-hand">TAP</span>
+ <div class="finger-bubble" id="finger-instruction-text">TAP RAPIDLY TO SLICE!</div>
+ </div>
+
+ <!-- Floating Floating Combo / Slice Popups Container -->
+ <div class="ad-floating-popups" id="ad-floating-popups"></div>
+
+ <!-- STAGE 1 OVERLAY: SLICE FRENZY HUD -->
+ <div class="stage-hud-overlay" id="overlay-stage-slice">
+ <div class="stage-top-goal">
+ <div class="goal-label">RAPID CHOP SPREE! SLICE THE TOMATO & ONION!</div>
+ <div class="stage-progress-bar-wrap">
+ <div class="stage-progress-bar-fill" id="slice-progress-bar" style="width: 0%;"></div>
+ </div>
+ <div class="goal-stats">
+ <span>PROGRESS: <strong id="slice-percent-text">0%</strong></span>
+ <span id="slice-streak-badge" class="badge-streak">FRENZY ACTIVE</span>
+ </div>
+ </div>
+
+ <!-- Big Juicy Mobile Ad Action Button -->
+ <div class="stage-bottom-action">
+ <button class="btn-mobile-ad-action btn-pulse-green" id="btn-ad-slice-action">
+ TAP RAPIDLY TO CHOP! (+100 COINS)
+ </button>
+ </div>
+ </div>
+
+ <!-- STAGE 2 OVERLAY: PAN SIZZLE & TIMING BAR HUD -->
+ <div class="stage-hud-overlay" id="overlay-stage-flip" style="display: none;">
+ <div class="timing-bar-container">
+ <div class="timing-bar-title">THE DREADED TIMING BAR! FLIP AT THE GREEN SWEET SPOT!</div>
+ 
+ <!-- The Iconic Mobile Ad Timing Bar -->
+ <div class="timing-bar-track">
+ <div class="timing-zone zone-raw">RAW (FAIL)</div>
+ <div class="timing-zone zone-perfect">PERFECT (+500)</div>
+ <div class="timing-zone zone-burnt">BURNT (FAIL)</div>
+ <!-- Moving Indicator Needle -->
+ <div class="timing-needle" id="timing-needle"></div>
+ </div>
+ 
+ <div class="timing-heat-status" id="timing-heat-status">
+ Sizzling Heat: <span style="color: #fb923c; font-weight: 800;">TURBO FLAME </span>
+ </div>
+ </div>
+
+ <!-- Big Juicy Mobile Ad Action Button -->
+ <div class="stage-bottom-action">
+ <button class="btn-mobile-ad-action btn-pulse-orange" id="btn-ad-flip-action">
+ TAP TO FLIP NOW! (DON'T MISS!)
+ </button>
+ </div>
+ </div>
+
+ <!-- STAGE 3 OVERLAY: BURGER TOWER STACKER HUD -->
+ <div class="stage-hud-overlay" id="overlay-stage-stack" style="display: none;">
+ <div class="stacker-top-hud">
+ <div class="stacker-title">STACK THE GIGA BURGER! ALIGN WITH THE LASER GUIDE!</div>
+ <div class="stacker-next-badge" id="stacker-next-badge" style="background: rgba(251, 191, 36, 0.2); border: 1.5px solid #fbbf24; border-radius: 20px; padding: 4px 14px; margin: 4px auto 8px; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 800; color: #fef08a; display: inline-flex; align-items: center; gap: 6px;">
+ <span>HOVERING:</span><strong id="stacker-hovering-name">Sizzling Beef Patty</strong>
+ </div>
+ <div class="stacker-info-row">
+ <div>LAYERS STACKED: <strong id="stacker-layer-count">0 / 6</strong></div>
+ <div id="stacker-wobble-tag" class="wobble-tag-safe">PERFECT 3D BALANCE</div>
+ </div>
+ <!-- Tilt meter -->
+ <div class="tilt-meter-track">
+ <div class="tilt-meter-marker" id="tilt-meter-marker"></div>
+ </div>
+ </div>
+
+ <!-- Big Juicy Mobile Ad Action Button -->
+ <div class="stage-bottom-action">
+ <button class="btn-mobile-ad-action btn-pulse-blue" id="btn-ad-drop-action">
+ DROP INGREDIENT NOW!
+ </button>
+ </div>
+ </div>
+
+ <!-- STAGE 4 OVERLAY: DRAMATIC JUDGE TASTE TEST -->
+ <div class="stage-hud-overlay" id="overlay-stage-judge" style="display: none;">
+ <div class="judge-taste-cinematic">
+ <div class="judge-heartbeat-box" id="judge-heartbeat-box">
+ <div class="heartbeat-pulse-icon">...</div>
+ <div class="heartbeat-text">JUDGES ARE EVALUATING YOUR BITE...</div>
+ </div>
+
+ <!-- Animated Dramatic Speech Bubble with Malayalam Meme Roasts -->
+ <div class="judge-drama-speech" id="judge-drama-speech" style="display: none;">
+ <div class="judge-speech-avatar" id="judge-speech-avatar">CHEF</div>
+ <div class="judge-speech-content">
+ <div class="judge-malayalam-quote" id="judge-malayalam-quote">
+ "Vere vella panikkum poikkoode?!"
+ </div>
+ <div class="judge-translit-quote" id="judge-translit-quote" style="display: none;">
+ "Vere vella panikkum poikkoode?!"
+ </div>
+ <div class="judge-speech-text" id="judge-speech-text">
+ "Can't you go do some other work?!"
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <!-- Big Presentation Button -->
+ <div class="stage-bottom-action" id="judge-start-action-wrap">
+ <button class="btn-mobile-ad-action btn-pulse-gold" id="btn-ad-taste-action">
+ PRESENT FOR CHEF VERDICT!
+ </button>
+ </div>
+ </div>
+
+ <!-- DRAMATIC MOBILE AD RESULT POPUP (FAIL / WIN) -->
+ <div class="mobile-ad-result-modal" id="mobile-ad-result-modal">
+ <div class="ad-result-card" id="ad-result-card">
+ <!-- Animated Stamp: FAIL or WIN -->
+ <div class="ad-result-stamp" id="ad-result-stamp">FAIL!</div>
+ <h2 class="ad-result-headline" id="ad-result-headline">FAILED! Better luck next time.</h2>
+
+ <!-- Malayalam Meme Verdict Callout -->
+ <div class="ad-malayalam-verdict-box" id="ad-malayalam-verdict-box">
+ <div class="verdict-malayalam-main" id="verdict-malayalam-main">
+ "Vere vella panikkum poikkoode?!"
+ </div>
+ <div class="verdict-translit-sub" id="verdict-translit-sub" style="display: none;">
+ "Vere vella panikkum poikkoode?!"
+ </div>
+ </div>
+
+ <p class="ad-result-desc" id="ad-result-desc">
+ You burnt the burger to a crisp! The chef called you an idiot sandwich!
+ </p>
+
+ <div class="ad-reward-box">
+ <span class="reward-tag">EARNED:</span>
+ <span class="reward-val" id="ad-reward-val">+0 COINS</span>
+ </div>
+
+ <!-- FAKE MOBILE AD VIRAL CALL TO ACTION BUTTONS -->
+ <div class="ad-modal-actions">
+ <button class="btn-ad-modal-cta btn-cta-install" id="btn-fake-install">
+ INSTALL FREE NOW <span class="badge-free">FREE</span>
+ </button>
+ <button class="btn-ad-modal-cta btn-cta-retry" id="btn-ad-retry">
+ TRY AGAIN (REVENGE RUN)
+ </button>
+ <button class="btn-ad-modal-cta btn-cta-next" id="btn-ad-next-level">
+ NEXT LEVEL: PIZZA TSUNAMI
+ </button>
+ </div>
+ </div>
+ </div>
+
+ </div>
+
+ <!-- Quick Switch Bar: Freeform 3D vs Mobile Ad Playable -->
+ <div class="ad-bottom-nav">
+ <button class="btn btn-sm btn-secondary" id="btn-reset-mobile-game">
+ Restart Challenge
+ </button>
+ <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-dark-muted);">
+ Tap or click anywhere on screen to interact directly!
+ </span>
+ 
+ </div>
+
+ </div>
+    </section>
+  </main>
+
+  <!-- ===================================================
+       MODAL 1: MASTERCHEF RECIPE BOOK (NO FORCED SELECTION)
+       =================================================== -->
+  <div class="modal-overlay" id="recipe-book-modal">
+    <div class="modal-card recipe-book-card">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 2rem;">📖</span>
+          <div>
+            <h3>MasterChef Official Recipe Guide</h3>
+            <p style="font-size: 0.8rem; color: var(--text-dark-muted); margin: 0;">
+              Total cooking freedom! No forced choice — consult these gourmet guides or invent your own masterpiece.
+            </p>
+          </div>
+        </div>
+        <button class="btn-close-modal" id="btn-close-recipe-book">&times;</button>
+      </div>
+
+      <div class="modal-body" style="max-height: 65vh; overflow-y: auto; padding: 18px 24px;">
+        <div id="recipe-book-list" class="recipe-cards-grid">
+          <!-- Populated dynamically by cooking_game.js -->
+        </div>
+      </div>
+
+      <div class="modal-footer" style="padding: 16px 24px; display: flex; justify-content: flex-end;">
+        <button class="btn btn-orange" onclick="document.getElementById('recipe-book-modal').classList.remove('active')">
+          Close Recipe Book
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================
+       MODAL 2: 3 CELEBRITY JUDGES REVIEW PANEL
+       =================================================== -->
+  <div class="modal-overlay" id="judges-review-modal">
+    <div class="modal-card judges-panel-card">
+      <div class="judges-modal-header">
+        <span class="judges-trophy-top">🏆</span>
+        <h2 style="font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 4px;">Official MasterChef Judges Verdict</h2>
+        <p style="font-size: 0.85rem; color: #cbd5e1; margin: 0;">Grand Finals Evaluation Panel</p>
+      </div>
+
+      <div class="judges-modal-body">
+        <!-- Plated Dish & Score Header -->
+        <div class="judges-score-banner">
+          <div>
+            <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: #94a3b8; font-weight: 700;">Served Dish</div>
+            <h3 id="judge-dish-title" style="font-size: 1.4rem; color: #ffffff; margin: 4px 0 6px 0;">Gourmet Double Smash Burger</h3>
+            <div id="judge-rank-badge" class="judge-trophy-badge">🏆 MASTERCHEF GRAND CHAMPION</div>
+ <!-- Judge 1: Gordon Ramsay -->
+ <div class="judge-box judge-gordon">
+ <div class="judge-box-header">
+ <div class="judge-avatar">GR</div>
+ <div>
+ <div class="judge-name">Chef Gordon</div>
+ <div class="judge-specialty">Doneness & Heat Technique</div>
+ </div>
+ <div class="judge-score" id="score-gordon">10/10</div>
+ </div>
+ <p class="judge-comment" id="quote-gordon">"Stunning sear! Perfectly balanced heat and restaurant quality crust!"</p>
+ </div>
+
+ <!-- Judge 2: Chef Antonio -->
+ <div class="judge-box judge-antonio">
+ <div class="judge-box-header">
+ <div class="judge-avatar">CA</div>
+ <div>
+ <div class="judge-name">Chef Antonio</div>
+ <div class="judge-specialty">Seasoning & Italian Soul</div>
+ </div>
+ <div class="judge-score" id="score-antonio">9/10</div>
+ </div>
+ <p class="judge-comment" id="quote-antonio">"Mamma mia! The aroma of herbs and melted butter is singing like an opera!"</p>
+ </div>
+
+ <!-- Judge 3: Critic Anton Ego -->
+ <div class="judge-box judge-ego">
+ <div class="judge-box-header">
+ <div class="judge-avatar">AE</div>
+ <div>
+ <div class="judge-name">Critic Anton Ego</div>
+ <div class="judge-specialty">Haute Cuisine Harmony</div>
+ </div>
+ <div class="judge-score" id="score-ego">9/10</div>
+ </div>
+ <p class="judge-comment" id="quote-ego">"A sublime symphony of textures and harmonic plating. Truly inspired."</p>
+ </div>
+ </div>
+ </div>
+
+ <div class="judges-modal-footer">
+ <button class="btn btn-orange" id="btn-restart-competition">
+ Cook Another Dish
+ </button>
+ <button class="btn btn-outline" onclick="document.getElementById('judges-review-modal').classList.remove('active')">
+ Close Review
+ </button>
+ </div>
+ </div>
+ </div>
+
+ <!-- ===================================================
+ CERTIFIED COOKED MODAL CARD (FOR OPTION 1)
+ =================================================== -->
+ <div class="modal-overlay" id="certificate-modal">
+ <div class="certificate-card">
+ <div class="cert-header">
+  <h3>Official Certificate of Being Cooked</h3>
+ <p style="font-size: 0.78rem; color: var(--text-dark-muted);">Issued by the Ministry of Last-Minute Academic Cramming</p>
+ </div>
+
+ <div class="cert-body">
+ <p style="font-size: 0.85rem; color: var(--text-dark-muted);">This certifies that</p>
+ <h2 id="cert-student-name" style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--black-primary);">Desperate Student</h2>
+ <p style="font-size: 0.85rem; color: var(--text-dark-muted);">
+ preparing for <strong id="cert-exam-name" style="color: var(--black-primary);">Semester Finals</strong><br>
+ Zodiac Sign: <strong id="cert-zodiac" style="color: var(--accent-orange);">Aries</strong>
+ </p>
+ 
+ <div class="cert-stamp" id="cert-percentage">82%</div>
+ <div style="font-family: var(--font-heading); font-weight: 800; color: var(--accent-orange);" id="cert-status">WELL DONE</div>
+ 
+ <p id="cert-roast" style="font-style: italic; font-size: 0.88rem; color: var(--text-dark-muted); margin-top: 6px;">
+ "Gordon Ramsay just walked in and called your semester an idiot sandwich."
+ </p>
+
+ <p style="font-size: 0.72rem; color: var(--text-dark-muted); margin-top: 8px;">
+ Date Certified: <span id="cert-date">2026-09-12</span>• Verification ID: #COOKED-404
+ </p>
+ </div>
+
+ <div class="cert-footer">
+ <button class="btn btn-orange" id="btn-copy-roast">
+ Copy Meme Report
+ </button>
+ <button class="btn btn-outline" id="btn-close-cert">
+ Close
+ </button>
+ </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="audio.js"></script>
+  <script src="cooked_meter.js"></script>
+  <script src="cooking_game.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
